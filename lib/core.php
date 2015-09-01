@@ -4,6 +4,7 @@ class Core {
 
     public $pages = array();
     public $output = ''; 
+    public static $language = 'en';
     
     public $nav = array();
     
@@ -13,7 +14,7 @@ class Core {
         
         Core::$site['siteurl'] = "https://ogma-docs-n00dles.c9.io";
         // fix this later to get ROOT Path
-        $this->pages = self::dirToArray(self::getRootPath().'pages');
+        $this->pages = self::dirToArray(self::getRootPath().'pages'.DS.self::$language.DS);
         //$this->getMenu();
         $this->processPages();
         
@@ -67,8 +68,8 @@ class Core {
                 'url'       => '/'.strtolower($parts[1]),
                 'order'     => $parts[0]
                 );
-            if (file_exists('/home/ubuntu/workspace/pages/'.$key.'/index.md')){
-                $this->nav[strtolower($parts[1])]['file'] = self::getRootPath().'pages'.DS.$key.DS.'index.md';
+            if (file_exists(self::getRootPath().'pages'.DS.self::$language.DS.$key.'/index.md')){
+                $this->nav[strtolower($parts[1])]['file'] = self::getRootPath().'pages'.DS.self::$language.DS.$key.DS.'index.md';
             }
             if (is_array($subpages)){
                 //$this->nav[strtolower($parts[1])]['submenu']=array();  
@@ -82,7 +83,7 @@ class Core {
                             'title'     => pathinfo($parts[1], PATHINFO_FILENAME),
                             'url'       => '/'.$topmenu.'/'.strtolower(pathinfo($parts[1], PATHINFO_FILENAME)),
                             'order'     => $parts[0],
-                            'file'      => self::getRootPath().'pages'.DS.$topmenu2.DS.$page
+                            'file'      => self::getRootPath().'pages'.DS.self::$language.DS.$topmenu2.DS.$page
                         );
                         
                     }
@@ -97,7 +98,7 @@ class Core {
         $cdir = scandir($dir); 
         foreach ($cdir as $key => $value) 
         { 
-            if (!in_array($value,array(".",".."))) 
+            if (!in_array($value,array(".","..",'index.md'))) 
             { 
                 if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) 
                 { 
