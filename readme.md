@@ -28,4 +28,14 @@ A page header can be added before a block of Markdown
     author: Auhtor
     template: template.tpl
     ---
+    
+**title** is the main title displayed on the page/title bar  
+**author** is the author of the page  
+**template** defaults to index.tpl, allows you to override for different pages.  
+
+### Creating a new Language
+
+Copy the 'en' folder and rename for your new language. 
+
+The system will automatically find all languages and offer them in the menu. 
 
