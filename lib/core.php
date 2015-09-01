@@ -8,15 +8,47 @@ class Core {
     public $nav = array();
     
     public function __construct() {
+        // fix this later to get ROOT Path
+        $this->pages = self::dirToArray(self::getRootPath().'pages');
+        //$this->getMenu();
+        $this->processPages();
         
-        $this->pages = self::dirToArray(self::getRootPath().'ogma-docs\pages');
-        $this->getMenu();
+        echo "<pre>";
+        print_r($this->nav);
+        echo "</pre>";
+        
         echo $this->output;
     }
     
-    public function parseMenu(){
-    
-    
+    public function processPages(){
+        $pages = $this->pages;
+        foreach($pages as $key=>$subpages){
+            $parts = explode('-', $key);
+            $this->nav[strtolower($parts[1])] = array(
+                'title'     => pathinfo($parts[1], PATHINFO_FILENAME),
+                'url'       => '/'.strtolower($parts[1]),
+                'order'     => $parts[0]
+                );
+            if (file_exists('/home/ubuntu/workspace/pages/'.$key.'/index.md')){
+                $this->nav[strtolower($parts[1])]['file'] = self::getRootPath().'pages'.DS.$key.DS.'index.md';
+            }
+            if (is_array($subpages)){
+                //$this->nav[strtolower($parts[1])]['submenu']=array();  
+                $topmenu = strtolower($parts[1]);
+                foreach($subpages as $page){
+                    if ($page != "index.md"){
+                        $parts = explode('-', $page);
+                        $this->nav[$topmenu]['submenu'][] = array(
+                            'title'     => pathinfo($parts[1], PATHINFO_FILENAME),
+                            'url'       => '/'.$topmenu.'/'.strtolower(pathinfo($parts[1], PATHINFO_FILENAME)),
+                            'order'     => $parts[0],
+                            'file'      => self::getRootPath().$topmenu.DS.$page
+                        );
+                        
+                    }
+                }
+            }
+        }
     }
 
     public function getMenu(){
@@ -65,9 +97,7 @@ class Core {
     
 	public static function getRootPath() {
         $pos = strrpos(dirname(__FILE__),DIRECTORY_SEPARATOR.'lib');
-        $adm = substr(dirname(__FILE__), 0, $pos);
-        $pos2 = strrpos($adm,DIRECTORY_SEPARATOR);
-        return self::tsl(substr(__FILE__, 0, $pos2));
+        return self::tsl(substr(__FILE__, 0, $pos));
 	}	
 
 
