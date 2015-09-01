@@ -22,11 +22,10 @@ A file named **index.md** will be automatically loaded for a top level menu item
 
 A page header can be added before a block of Markdown 
 
-'''
----
-title: Main page title
-author: Auhtor
-template: template.tpl
----
-'''
+
+    ---
+    title: Main page title
+    author: Auhtor
+    template: template.tpl
+    ---
 
