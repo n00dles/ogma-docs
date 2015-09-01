@@ -2,6 +2,8 @@
 title: Blogging
 author: Mike
 ---
+# Blog
+
 To retrieve data from a table and use it in your theme you need to first connect to the Query engine
 
 ### Create a new Query
