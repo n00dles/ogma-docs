@@ -13,11 +13,11 @@ class Core {
         //$this->getMenu();
         $this->processPages();
         
-        echo "<pre>";
-        print_r($this->nav);
-        echo "</pre>";
+        //echo "<pre>";
+        //print_r($this->nav);
+        //echo "</pre>";
         
-        echo $this->output;
+        //echo $this->output;
     }
     
     public function processPages(){
@@ -51,28 +51,6 @@ class Core {
         }
     }
 
-    public function getMenu(){
-    $pages = $this->pages;
-    $this->output .= '<ul class="topics">';
-    foreach($pages as $key=>$subpages){
-      $parts = explode('-', $key);
-      $this->output .= '<li class="dd-item visited" data-nav-id="/">
-            <a href="/'.strtolower($parts[1]).'">
-                <i class="fa fa-check read-icon"></i>
-                <span><b>'.$parts[1].'</span>
-            </a>';
-        if (is_array($subpages)){
-          $this->output .= '<ul>';
-          foreach($subpages as $page){
-            $parts = explode('-', $page);
-            $this->output .= '<li>'.$parts[1].'</li>';
-          }
-          $this->output .= '</ul>';
-        }
-        $this->output .= '</li>';
-    } 
-    $this->output .= '</ul>';
-    }
 
     public static function dirToArray($dir) { 
         $result = array(); 
