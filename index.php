@@ -21,4 +21,15 @@ echo '<h1><a href="'.$page->fetch('uri').'">'.$page->fetch('title').'</a></h1>'.
 
 $nav = $system->nav;
 
-require_once('theme/index.tpl');
+$uri = Core::getMyUrl();
+
+$pagedetails = $system->getPage($uri);
+
+$option = new FrontMatter($pagedetails['file']);
+
+$markdownContent = new ParsedownExtra();
+$content = $markdownContent->text($option->fetch('content') );
+$title = $option->fetch('title');
+$template = $option->fetch('template');
+
+require_once('theme/'.$template);

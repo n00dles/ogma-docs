@@ -7,7 +7,11 @@ class Core {
     
     public $nav = array();
     
+    public static $site = array();
+    
     public function __construct() {
+        
+        Core::$site['siteurl'] = "https://ogma-docs-n00dles.c9.io";
         // fix this later to get ROOT Path
         $this->pages = self::dirToArray(self::getRootPath().'pages');
         //$this->getMenu();
@@ -18,6 +22,40 @@ class Core {
         //echo "</pre>";
         
         //echo $this->output;
+    }
+    
+    public static function getMyUrl(){
+        $serverUri = $url = "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s://" : "://") . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $uri = str_replace(Core::$site['siteurl'], '', $serverUri);
+        $uri = str_replace('index.php', '', $uri);
+        return $uri;
+    }
+    
+    
+    
+    public function getPage($uri){
+        $match = '';
+        $parts = explode("/",$uri);
+        $pages = $this->nav;
+        //print_r($parts);
+        
+        foreach($pages as $key=>$subpages ){
+            if ($uri == $pages[$key]['url']){
+                $match = $pages[$key];
+                return $pages[$key];
+            }
+            if ($match=='' && is_array($subpages)){
+                foreach($subpages['submenu'] as $page){
+                    if ($uri == $page['url']){
+                        $match = $page;
+                        return $page;
+                    }
+                }
+                
+            }
+        }
+        return $match;
+        
     }
     
     public function processPages(){
@@ -35,6 +73,8 @@ class Core {
             if (is_array($subpages)){
                 //$this->nav[strtolower($parts[1])]['submenu']=array();  
                 $topmenu = strtolower($parts[1]);
+                $topmenu2 = $key;
+                
                 foreach($subpages as $page){
                     if ($page != "index.md"){
                         $parts = explode('-', $page);
@@ -42,7 +82,7 @@ class Core {
                             'title'     => pathinfo($parts[1], PATHINFO_FILENAME),
                             'url'       => '/'.$topmenu.'/'.strtolower(pathinfo($parts[1], PATHINFO_FILENAME)),
                             'order'     => $parts[0],
-                            'file'      => self::getRootPath().$topmenu.DS.$page
+                            'file'      => self::getRootPath().'pages'.DS.$topmenu2.DS.$page
                         );
                         
                     }

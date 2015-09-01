@@ -22,6 +22,7 @@ class FrontMatter
      */
     public function __construct($file)
     {
+        $this->data['template'] = 'index.tpl';
         $file = (file_exists($file)) ? $this->Read($file) : str_replace(array("\r\n", "\r", "\n"), "\n", $file);
         $this->yaml_separator = "---\n";
         $fm = $this->FrontMatter($file);
@@ -38,7 +39,11 @@ class FrontMatter
      */
     public function fetch($key)
     {
-        return $this->data[$key];
+        if (isset($this->data[$key])) {
+            return $this->data[$key];
+        } else {
+            return '';
+        }
     }
 
     /**
@@ -105,13 +110,26 @@ class FrontMatter
         }
 
         # Parse YAML
-        $final = yaml_parse($front_matter);
-
+        $final = self::yamlParse($front_matter);
         # Store Content in Final array
         $final['content'] = $content;
 
         # Return Final array
         return $final;
+    }
+
+    public static function yamlParse($data){
+        $yaml = array();
+        $lines = explode("\n", $data);
+        array_pop($lines);
+        $yaml['template'] = 'index.tpl';
+        foreach($lines as $line){
+            $parts = explode(':', $line);
+            if (count($parts==2)){
+                $yaml[ trim($parts[0]) ]=trim($parts[1]);
+            }
+        }
+        return $yaml;
     }
 
     /**

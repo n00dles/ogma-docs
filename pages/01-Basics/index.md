@@ -1,6 +1,7 @@
 ---
-title: The Basics of OGMA CMS
+title: OGMA CMS - The Basics
 author: Mike
 ---
+# Basics
 
-### Testing YAMP/Markdown
+Discover what **OGMA** is all about and the core-concepts behind it.
