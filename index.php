@@ -31,5 +31,6 @@ $markdownContent = new ParsedownExtra();
 $content = $markdownContent->text($option->fetch('content') );
 $title = $option->fetch('title');
 $template = $option->fetch('template');
+$author = $option->fetch('author');
 
 require_once('theme/'.$template);
