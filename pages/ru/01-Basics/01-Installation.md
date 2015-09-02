@@ -1,4 +1,4 @@
-## Russian Installation
+## Russian Installation uyeiyqwi e
 
 * Download the latest version of OGMA CMS and extract the contents of the Zip File.  
 * Upload by ftp the contents of the zip to your server.

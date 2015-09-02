@@ -22,11 +22,9 @@ class Core {
         
         //set language
         self::$language = LANGUAGE;
-        
-        //self::debugArray($this->languages);
-        
-        // scan the pages folder and get a list of pages
+                // scan the pages folder and get a list of pages
         $this->processPages();
+        //self::debugArray($this->nav);
         
     }
     
@@ -99,7 +97,9 @@ class Core {
                 'order'     => $parts[0]
                 );
             if (file_exists(self::getRootPath().'pages'.DS.self::$language.DS.$key.'/index.md')){
-                $this->nav[strtolower($parts[1])]['file'] = self::getRootPath().'pages'.DS.self::$language.DS.$key.DS.'index.md';
+                $this->nav[strtolower($parts[1])]['file'] = 'pages'.DS.self::$language.DS.$key.DS.'index.md';
+            } else {
+                $this->nav[strtolower($parts[1])]['file'] = '';
             }
             if (is_array($subpages)){
                 //$this->nav[strtolower($parts[1])]['submenu']=array();  
@@ -113,7 +113,7 @@ class Core {
                             'title'     => pathinfo($parts[1], PATHINFO_FILENAME),
                             'url'       => '/'.$topmenu.'/'.strtolower(pathinfo($parts[1], PATHINFO_FILENAME)),
                             'order'     => $parts[0],
-                            'file'      => self::getRootPath().'pages'.DS.self::$language.DS.$topmenu2.DS.$page
+                            'file'      => 'pages'.DS.self::$language.DS.$topmenu2.DS.$page
                         );
                         
                     }

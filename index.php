@@ -21,7 +21,7 @@ $uri = Core::getMyUrl();
 
 $pagedetails = $system->getPage($uri);
 
-$option = new FrontMatter($pagedetails['file']);
+$option = new FrontMatter(Core::getRootPath().$pagedetails['file']);
 
 $markdownContent = new ParsedownExtra();
 $content = $markdownContent->text($option->fetch('content') );
@@ -30,5 +30,8 @@ $template = $option->fetch('template');
 $author = $option->fetch('author');
 $keywords = $option->fetch('keywords');
 $description = $option->fetch('description');
+$filepath = $pagedetails['file'];
+$themeurl = '/theme/'.THEME;
 
-require_once('theme/'.$template);
+
+require_once('theme/'.THEME.'/'.$template);

@@ -7,15 +7,15 @@
     <title><?php echo $title; ?></title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="/theme/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $themeurl; ?>/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/theme/css/AdminLTE.css">
-    <link rel="stylesheet" href="/theme/css/style.css">
-    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo $themeurl; ?>/css/AdminLTE.css">
+    <link rel="stylesheet" href="<?php echo $themeurl; ?>/css/style.css">
+    <link rel="stylesheet" href="<?php echo $themeurl; ?>/css/font-awesome.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -87,7 +87,7 @@
           <h1><?php echo $title; ?></h1>
           <?php if (GHURL!=''){ ?>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-github"></i> Edit on Github</a></li>
+            <li><a href="<?php echo GHURL.$filepath; ?>"><i class="fa fa-github"></i> Edit on Github</a></li>
           </ol>
           <?php } ?>
         </div>
@@ -124,14 +124,14 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="/theme/js/jQuery-2.1.4.min.js"></script>
+    <script src="<?php echo $themeurl; ?>/js/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="/theme/js/bootstrap.min.js"></script>
+    <script src="<?php echo $themeurl; ?>/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/theme/js/app.min.js"></script>
+    <script src="<?php echo $themeurl; ?>/js/app.min.js"></script>
     <!-- SlimScroll 1.3.0 -->
-    <script src="/theme/js/jquery.slimscroll.min.js"></script>
+    <script src="<?php echo $themeurl; ?>/js/jquery.slimscroll.min.js"></script>
     <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
-    <script src="/theme/js/docs.js"></script>
+    <script src="<?php echo $themeurl; ?>/js/docs.js"></script>
   </body>
 </html>
