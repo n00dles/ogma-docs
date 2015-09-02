@@ -38,7 +38,6 @@ class Core {
         $match = '';
         $parts = explode("/",$uri);
         $pages = $this->nav;
-        //print_r($parts);
         
         foreach($pages as $key=>$subpages ){
             if ($uri == $pages[$key]['url']){
@@ -54,6 +53,11 @@ class Core {
                 }
                 
             }
+        } 
+        if ($parts[0]=="" && $parts[1]==''){
+            reset($pages);
+            $first_key = key($pages);
+            $match = $pages[$first_key];
         }
         return $match;
         
@@ -106,7 +110,9 @@ class Core {
                 } 
                     else 
                 { 
-                    $result[] = $value; 
+                    if (pathinfo($value, PATHINFO_EXTENSION) == 'md'){
+                        $result[] = $value; 
+                    }
                 } 
             } 
         } 
