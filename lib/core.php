@@ -4,7 +4,7 @@ class Core {
 
     public $pages = array();
     public $output = ''; 
-    public static $language = 'ru';
+    public static $language = 'en';
     public $languages = array();
     
     public $nav = array();
@@ -16,8 +16,15 @@ class Core {
         Core::$site['siteurl'] = SITEURL;
 
         $this->pages = self::dirToArray(self::getRootPath().'pages'.DS.self::$language.DS);
+        
+        // get installed languages
         $this->languages = self::getInstalledLanguages();
-        self::debugArray($this->languages);
+        
+        //set language
+        self::$language = LANGUAGE;
+        
+        //self::debugArray($this->languages);
+        
         // scan the pages folder and get a list of pages
         $this->processPages();
         
@@ -56,7 +63,7 @@ class Core {
         $parts = explode("/",$uri);
         $pages = $this->nav;
         
-        print_r($parts);
+        //print_r($parts);
         
         foreach($pages as $key=>$subpages ){
             if ($uri == $pages[$key]['url']){

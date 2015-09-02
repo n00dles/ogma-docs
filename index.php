@@ -28,8 +28,7 @@ $content = $markdownContent->text($option->fetch('content') );
 $title = $option->fetch('title');
 $template = $option->fetch('template');
 $author = $option->fetch('author');
-$metad = $option->fetch('metad');
-$metak = $option->fetch('metak');
-
+$keywords = $option->fetch('keywords');
+$description = $option->fetch('description');
 
 require_once('theme/'.$template);
