@@ -8,6 +8,7 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 
+require_once( 'config.php');
 require_once( 'lib' . DS . 'core.php');
 require_once( 'lib' . DS . 'yaml.php');
 require_once( 'lib' . DS . 'parsedownextra.php');
@@ -27,5 +28,8 @@ $content = $markdownContent->text($option->fetch('content') );
 $title = $option->fetch('title');
 $template = $option->fetch('template');
 $author = $option->fetch('author');
+$metad = $option->fetch('metad');
+$metak = $option->fetch('metak');
+
 
 require_once('theme/'.$template);

@@ -4,7 +4,8 @@ class Core {
 
     public $pages = array();
     public $output = ''; 
-    public static $language = 'en';
+    public static $language = 'ru';
+    public $languages = array();
     
     public $nav = array();
     
@@ -12,17 +13,25 @@ class Core {
     
     public function __construct() {
         
-        Core::$site['siteurl'] = "https://ogma-docs-n00dles.c9.io";
-        // fix this later to get ROOT Path
+        Core::$site['siteurl'] = SITEURL;
+
         $this->pages = self::dirToArray(self::getRootPath().'pages'.DS.self::$language.DS);
-        //$this->getMenu();
+        $this->languages = self::getInstalledLanguages();
+        self::debugArray($this->languages);
+        // scan the pages folder and get a list of pages
         $this->processPages();
         
-        //echo "<pre>";
-        //print_r($this->nav);
-        //echo "</pre>";
-        
-        //echo $this->output;
+    }
+    
+    
+    public function getInstalledLanguages(){
+        $path = self::getRootPath().'pages';
+        $languages = array();
+        foreach(glob($path.'/*', GLOB_ONLYDIR) as $dir) {
+            $dir = str_replace($path.'/', '', $dir);
+            $languages[] = $dir;
+        }
+        return $languages;
     }
     
     public static function getMyUrl(){
@@ -33,11 +42,21 @@ class Core {
     }
     
     
+    // print and array
+    public static function debugArray($arr){
+        echo "<pre>";
+        print_r($arr);
+        echo "</pre>";
+    }
     
+    // scan the pages and find the page we are looking for 
+    // todo: check if language is provided
     public function getPage($uri){
         $match = '';
         $parts = explode("/",$uri);
         $pages = $this->nav;
+        
+        print_r($parts);
         
         foreach($pages as $key=>$subpages ){
             if ($uri == $pages[$key]['url']){
