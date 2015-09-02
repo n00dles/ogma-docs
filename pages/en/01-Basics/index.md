@@ -1,6 +1,7 @@
 ---
 title: OGMA CMS - The Basics
 author: Mike
+template:chapter.tpl
 ---
 # Basics
 
