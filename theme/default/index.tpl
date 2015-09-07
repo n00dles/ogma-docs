@@ -63,7 +63,7 @@
             <li><a href="<?php echo $navItem['url']; ?>" ><i class="fa fa-circle-o"></i><?php echo $navItem['title']; ?></a>
             
             <?php if (array_key_exists('submenu', $navItem) && is_array($navItem['submenu'])){  ?>
-            <ul  class="nav  treeview-menu">
+            <ul  class="nav indent">
             <?php foreach ($navItem['submenu'] as $subItem){ ?>
               <li>
                   <a href="<?php echo $subItem['url']; ?>" ><?php echo $subItem['title']; ?></a>

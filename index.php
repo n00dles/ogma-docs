@@ -3,10 +3,14 @@
 // Main engine defines    
 define('DS', DIRECTORY_SEPARATOR);
 
+require_once( 'config.php');
+
 // enable error temporarily in case there are startup errors 
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-error_reporting(-1);
+if (DEBUG===true){
+    ini_set('display_errors',1);
+    ini_set('display_startup_errors',1);
+    error_reporting(-1);
+}
 
 require_once( 'config.php');
 require_once( 'lib' . DS . 'core.php');
