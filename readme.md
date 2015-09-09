@@ -25,7 +25,7 @@ A page header can be added before a block of Markdown
 
     ---
     title: Main page title
-    author: Auhtor
+    author: Author
     template: template.tpl
     ---
     
@@ -37,5 +37,11 @@ A page header can be added before a block of Markdown
 
 Copy the 'en' folder and rename for your new language. 
 
-The system will automatically find all languages and offer them in the menu. 
+Prefix the language to the URL see that language version of the docs. 
+
+i.e 
+/en/Basics/introduction
+/ru/Basics/introduction
+/fr/Basics/introduction
+
 
