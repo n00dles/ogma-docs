@@ -25,7 +25,10 @@ $uri = Core::getMyUrl();
 
 $pagedetails = $system->getPage($uri);
 
-$option = new FrontMatter(Core::getRootPath().$pagedetails['file']);
+$nav = $system->nav;
+
+//Core::debugArray($system->nav);
+$option = new FrontMatter(Core::getRootPath().DS.'pages'.DS.Core::$language.$pagedetails['file']);
 
 $markdownContent = new ParsedownExtra();
 $content = $markdownContent->text($option->fetch('content') );
@@ -34,7 +37,7 @@ $template = $option->fetch('template');
 $author = $option->fetch('author');
 $keywords = $option->fetch('keywords');
 $description = $option->fetch('description');
-$filepath = $pagedetails['file'];
+$filepath = DS.'pages'.DS.Core::$language.$pagedetails['file'];
 $themeurl = '/theme/'.THEME;
 
 

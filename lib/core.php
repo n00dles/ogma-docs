@@ -60,29 +60,43 @@ class Core {
         $match = '';
         $parts = explode("/",$uri);
         $pages = $this->nav;
+        $counter = 0;
         
-        //print_r($parts);
+        if (in_array($parts[1],$this->languages)){
+            self::$language = $parts[1];
+            array_shift($parts);
+            array_shift($parts);
+            $newuri = '/'.implode('/',$parts); 
+        } else {
+            self::$language = 'en';
+            $newuri = $uri;
+        }
+
         
         foreach($pages as $key=>$subpages ){
-            if ($uri == $pages[$key]['url']){
+            if ($newuri == $pages[$key]['url']){
                 $match = $pages[$key];
-                return $pages[$key];
+                $this->nav[$key]['active'] = true;
+                return $match;
             }
             if ($match=='' && is_array($subpages)){
+                $i=0;
                 foreach($subpages['submenu'] as $page){
-                    if ($uri == $page['url']){
+                    if ($newuri == $page['url']){
                         $match = $page;
-                        return $page;
+                        $this->nav[$key]['submenu'][$i]['active'] = true;
+                        return $match;
                     }
+                    $i++;
                 }
                 
             }
         } 
-        if ($parts[0]=="" && $parts[1]==''){
-            reset($pages);
-            $first_key = key($pages);
-            $match = $pages[$first_key];
-        }
+        
+        reset($pages);
+        $first_key = key($pages);
+        $match = $pages[$first_key];
+
         return $match;
         
     }
@@ -94,10 +108,11 @@ class Core {
             $this->nav[strtolower($parts[1])] = array(
                 'title'     => pathinfo($parts[1], PATHINFO_FILENAME),
                 'url'       => '/'.strtolower($parts[1]),
-                'order'     => $parts[0]
+                'order'     => $parts[0],
+                'active'    => false
                 );
             if (file_exists(self::getRootPath().'pages'.DS.self::$language.DS.$key.'/index.md')){
-                $this->nav[strtolower($parts[1])]['file'] = 'pages'.DS.self::$language.DS.$key.DS.'index.md';
+                $this->nav[strtolower($parts[1])]['file'] = DS.$key.DS.'index.md';
             } else {
                 $this->nav[strtolower($parts[1])]['file'] = '';
             }
@@ -113,7 +128,8 @@ class Core {
                             'title'     => pathinfo($parts[1], PATHINFO_FILENAME),
                             'url'       => '/'.$topmenu.'/'.strtolower(pathinfo($parts[1], PATHINFO_FILENAME)),
                             'order'     => $parts[0],
-                            'file'      => 'pages'.DS.self::$language.DS.$topmenu2.DS.$page
+                            'file'      => DS.$topmenu2.DS.$page,
+                            'active'    => false
                         );
                         
                     }
@@ -128,7 +144,7 @@ class Core {
         $cdir = scandir($dir); 
         foreach ($cdir as $key => $value) 
         { 
-            if (!in_array($value,array(".","..",'index.md'))) 
+            if (!in_array($value,array(".","..",'index.md','404.md'))) 
             { 
                 if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) 
                 { 

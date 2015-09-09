@@ -60,12 +60,19 @@
 
         <ul  class="nav sidebar-menu">
         <?php foreach($nav as $navItem){ ?>
-            <li><a href="<?php echo $navItem['url']; ?>" ><i class="fa fa-circle-o"></i><?php echo $navItem['title']; ?></a>
+            <li class="treeview"><a href="<?php echo $navItem['url']; ?>" ><i class="fa fa-circle-o"></i><?php echo $navItem['title']; ?></a>
             
             <?php if (array_key_exists('submenu', $navItem) && is_array($navItem['submenu'])){  ?>
-            <ul  class="nav indent">
+            <ul class="nav treeview-menu ">
             <?php foreach ($navItem['submenu'] as $subItem){ ?>
-              <li>
+            <?php
+                if ($subItem['active']==true){
+                    echo "<li class='active' >" ;
+                } else {
+                    echo '<li>';
+                }
+              ?>
+        
                   <a href="<?php echo $subItem['url']; ?>" ><?php echo $subItem['title']; ?></a>
               </li>
             <?php } ?>

@@ -6,7 +6,7 @@ define('VERSION','1.0');
 
 define ('SITETITLE', "OGMA CMS");
 
-define ('THEME', 'docs');
+define ('THEME', 'default');
 
 
 // set Site URL
