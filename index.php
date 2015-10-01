@@ -27,7 +27,7 @@ $pagedetails = $system->getPage($uri);
 
 $nav = $system->nav;
 
-//Core::debugArray($system->nav);
+//Core::debugArray($system->pages);
 $option = new FrontMatter(Core::getRootPath().DS.'pages'.DS.Core::$language.$pagedetails['file']);
 
 $markdownContent = new ParsedownExtra();

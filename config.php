@@ -16,7 +16,7 @@ define ('SITEURL', "https://ogma-docs-n00dles.c9.io");
 define ('DEBUG', true);
 
 // set default language
-define ('LANGUAGE', 'en');
+define ('LANGUAGE', 'ru');
 
 // enable gihub linking
 define ('GHURL', 'https://github.com/n00dles/ogma-docs/blob/master/')

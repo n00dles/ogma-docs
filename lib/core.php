@@ -14,15 +14,17 @@ class Core {
     public function __construct() {
         
         Core::$site['siteurl'] = SITEURL;
-
+        //set default language
+        self::$language = LANGUAGE;
+        
         $this->pages = self::dirToArray(self::getRootPath().'pages'.DS.self::$language.DS);
         
         // get installed languages
         $this->languages = self::getInstalledLanguages();
         
-        //set language
-        self::$language = LANGUAGE;
-                // scan the pages folder and get a list of pages
+       
+        
+        // scan the pages folder and get a list of pages
         $this->processPages();
         //self::debugArray($this->nav);
         
@@ -124,7 +126,7 @@ class Core {
                 foreach($subpages as $page){
                     if ($page != "index.md"){
                         $parts = explode('-', $page);
-                        $this->nav[$topmenu]['submenu'][] = array(
+                        $this->nav[$topmenu]['submenu'][$parts[0]] = array(
                             'title'     => pathinfo($parts[1], PATHINFO_FILENAME),
                             'url'       => '/'.$topmenu.'/'.strtolower(pathinfo($parts[1], PATHINFO_FILENAME)),
                             'order'     => $parts[0],
