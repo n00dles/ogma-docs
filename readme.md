@@ -43,4 +43,3 @@ i.e
 /en/Basics/introduction
 /ru/Basics/introduction
 /fr/Basics/introduction
-
