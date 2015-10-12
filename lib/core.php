@@ -364,7 +364,7 @@ class Core {
             }
             $file = Core::getRootPath().'pages/'.$language.$pageurl;
             if (file_exists($file)){
-                $output .= '<a href="/'.$language.$pageurl.'" class="btn btn-'.$current.' btn-xs">'.$language.'</a>';
+                $output .= '<a href="/'.$language.$pageurl.'" class="btn btn-'.$current.' btn-xs" data-toggle="tooltip" data-placement="bottom" title="'.Core::$langnames[$language].'">'.$language.'</a>';
             }
         }
         echo $output;

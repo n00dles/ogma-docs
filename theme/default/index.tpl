@@ -85,7 +85,10 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo $themeurl; ?>/js/bootstrap.min.js"></script>
-
+    
+    <!-- App JavaScript -->
+    <script src="<?php echo $themeurl; ?>/js/script.js"></script>
+    
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
