@@ -353,7 +353,7 @@ class Core {
         return $result; 
     } 
        
-    public  function showLanguageBar($pageurl){
+    public  function showLanguageBar($pagefile, $pageurl){
         $output = '';
         $languages = $this->languages;
         foreach($languages as $language){
@@ -362,7 +362,7 @@ class Core {
             } else {
                 $current = "primary";
             }
-            $file = Core::getRootPath().'pages/'.$language.$pageurl;
+            $file = Core::getRootPath().'pages/'.$language.$pagefile;
             if (file_exists($file)){
                 $output .= '<a href="/'.$language.$pageurl.'" class="btn btn-'.$current.' btn-xs" data-toggle="tooltip" data-placement="bottom" title="'.Core::$langnames[$language].'">'.$language.'</a>';
             }

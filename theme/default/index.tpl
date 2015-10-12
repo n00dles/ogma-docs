@@ -56,7 +56,7 @@
 </div>
     <div class="contentbrand nav ">
     <div class="pull-right lang-bar">
-        <?php $system->showLanguageBar($pagedetails['file']); ?>
+        <?php $system->showLanguageBar($pagedetails['file'], $pagedetails['url']); ?>
     </div>
     </div>
     <div id="wrapper">
