@@ -1,144 +1,101 @@
-
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <title><?php echo $title; ?></title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="<?php echo $themeurl; ?>/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo $themeurl; ?>/css/AdminLTE.css">
-    <link rel="stylesheet" href="<?php echo $themeurl; ?>/css/style.css">
-    <link rel="stylesheet" href="<?php echo $themeurl; ?>/css/font-awesome.min.css">
+    <!-- Bootstrap Core CSS -->
+    <link href="<?php echo $themeurl; ?>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $themeurl; ?>/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="<?php echo $themeurl; ?>/css/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body class="skin-blue " data-spy="scroll" data-target="#scrollspy">
-    <div class="wrapper">
-
-      <header class="main-header">
-        <!-- Logo -->
-        <!-- Logo -->
-        <a href="/" class="logo">
-          <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>OGMA</b></span>
-          <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>OGMA</b> CMS</span>
-        </a>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
-          </a>
-          <!-- Navbar Right Menu -->
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-              <li><a href="http://ogmacms.com">Main Site</a></li>
-              <li><a href="http://ogmacms.com/forum">Community Forum</a></li>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <!-- Left side column. contains the logo and sidebar -->
-      <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <div class="sidebar" id="scrollspy">
-
-          <!-- sidebar menu: : style can be found in sidebar.less -->
-
-        <ul  class="nav sidebar-menu">
-        <?php foreach($nav as $navItem){ ?>
-            <li class="treeview"><a href="<?php echo $navItem['url']; ?>" ><i class="fa fa-circle-o"></i><?php echo $navItem['title']; ?></a>
+</head>
+<body>
+<div class="nav-side-menu">
+    <div class="brand">OGMA DOCS</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+                <?php $i=0;
+                foreach($nav as $navItem){ 
+                $i++;
+                ?>
+                <?php if (array_key_exists('submenu', $navItem) && is_array($navItem['submenu'])){  ?>
+                <li  data-toggle="collapse" data-target="#<?php echo 'menu'.$i; ?>" class="collapsed active">
+                  <a href="#"><i class="fa fa-circle-o fa-lg"></i> <?php echo $navItem['title']; ?> <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse <?php if ($navItem['active']) echo ' in'; ?> " id="<?php echo 'menu'.$i; ?>">
+                <?php foreach ($navItem['submenu'] as $subItem){ ?>
+                  <li>
+                      <a href="/<?php echo Core::$language.$subItem['url']; ?>" ><?php echo $subItem['title']; ?></a>
+                  </li>
+                <?php } ?>
+                </ul>
+                <?php } else { ?>
+                <li><a href="/<?php echo Core::$language.$navItem['url']; ?>" ><i class="fa fa-dashboard fa-lg"></i> <?php echo $navItem['title']; ?></a>
+                <?php } ?>
+                
             
-            <?php if (array_key_exists('submenu', $navItem) && is_array($navItem['submenu'])){  ?>
-            <ul class="nav treeview-menu ">
-            <?php foreach ($navItem['submenu'] as $subItem){ ?>
-            <?php
-                if ($subItem['active']==true){
-                    echo "<li class='active' >" ;
-                } else {
-                    echo '<li>';
-                }
-              ?>
-        
-                  <a href="<?php echo $subItem['url']; ?>" ><?php echo $subItem['title']; ?></a>
-              </li>
             <?php } ?>
+           
             </ul>
-            <?php } ?>
-            </li>
-        
-        <?php } ?>
-        </ul>
+     </div>
+     
+</div>
+    <div class="contentbrand nav ">
+    <div class="pull-right lang-bar">
+        <a href="#" class="btn btn-primary btn-xs">en</a>
+        <a href="#" class="btn btn-primary btn-xs">ru</a>
+    </div>
+    <?php echo "Language: ".Core::$language; ?>
+    </div>
+    <div id="wrapper">
+        <!-- /#sidebar-wrapper -->
 
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <?php 
+                        //Core::debugArray($system->nav);
+                        echo $content; 
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.sidebar -->
-      </aside>
+        <!-- /#page-content-wrapper -->
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-          <h1><?php echo $title; ?></h1>
-          <?php if (GHURL!=''){ ?>
-          <ol class="breadcrumb">
-            <li><a href="<?php echo GHURL.$filepath; ?>"><i class="fa fa-github"></i> Edit on Github</a></li>
-          </ol>
-          <?php } ?>
-        </div>
+    </div>
+    <!-- /#wrapper -->
 
-        <!-- Main content -->
-        <div class="content body">
+    <!-- jQuery -->
+    <script src="<?php echo $themeurl; ?>/js/jquery.js"></script>
 
-        <?php
-        echo $content;
-        ?>
-
-
-        </div><!-- /.content -->
-      </div><!-- /.content-wrapper -->
-
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 1.0 , generated by OGMADOC
-        </div>
-        <strong>Copyright &copy; 2015 <a href="http://ogmacms.com">OGMA CMS</a>.</strong> All rights reserved.
-      </footer>
-
-      <!-- Control Sidebar -->
-      <aside class="control-sidebar control-sidebar-dark">
-        <!-- Create the tabs -->
-        <div class="pad">
-          This is an example of the control sidebar.
-        </div>
-      </aside><!-- /.control-sidebar -->
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
-
-    </div><!-- ./wrapper -->
-
-    <!-- jQuery 2.1.4 -->
-    <script src="<?php echo $themeurl; ?>/js/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
+    <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo $themeurl; ?>/js/bootstrap.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<?php echo $themeurl; ?>/js/app.min.js"></script>
-    <!-- SlimScroll 1.3.0 -->
-    <script src="<?php echo $themeurl; ?>/js/jquery.slimscroll.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
-    <script src="<?php echo $themeurl; ?>/js/docs.js"></script>
-  </body>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
 </html>

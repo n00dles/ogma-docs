@@ -21,9 +21,7 @@ class Core {
         
         // get installed languages
         $this->languages = self::getInstalledLanguages();
-        
-       
-        
+
         // scan the pages folder and get a list of pages
         $this->processPages();
         //self::debugArray($this->nav);
@@ -63,7 +61,6 @@ class Core {
         $parts = explode("/",$uri);
         $pages = $this->nav;
         $counter = 0;
-        
         if (in_array($parts[1],$this->languages)){
             self::$language = $parts[1];
             array_shift($parts);
@@ -83,10 +80,11 @@ class Core {
             }
             if ($match=='' && is_array($subpages)){
                 $i=0;
-                foreach($subpages['submenu'] as $page){
+                foreach($subpages['submenu'] as $key2=>$page){
                     if ($newuri == $page['url']){
                         $match = $page;
-                        $this->nav[$key]['submenu'][$i]['active'] = true;
+                        $this->nav[$key]['submenu'][$key2]['active'] = true;
+                        $this->nav[$key]['active']= true;
                         return $match;
                     }
                     $i++;
@@ -98,7 +96,6 @@ class Core {
         reset($pages);
         $first_key = key($pages);
         $match = $pages[$first_key];
-
         return $match;
         
     }
@@ -150,12 +147,18 @@ class Core {
             { 
                 if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) 
                 { 
-                    $result[$value] = self::dirToArray($dir . DIRECTORY_SEPARATOR . $value); 
+                    if (preg_match('/(\d{2,})(-)(\w+)/',$value, $matches)){
+                        $result[$value] = self::dirToArray($dir . DIRECTORY_SEPARATOR . $value);
+                    } 
                 } 
                     else 
                 { 
-                    if (pathinfo($value, PATHINFO_EXTENSION) == 'md'){
-                        $result[] = $value; 
+                    if (pathinfo($value, PATHINFO_EXTENSION) == 'md' ){
+                        // only add files in the format 
+                        // xx-alpha.md to the pages array to build the menu
+                        if (preg_match('/(\d{2,})(-)(\w+(.md))/',$value)){
+                            $result[] = $value; 
+                        }
                     }
                 } 
             } 

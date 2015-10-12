@@ -1,6 +1,8 @@
 <?php
 // System Defines 
 
+define('DS', DIRECTORY_SEPARATOR);
+
 // set version
 define('VERSION','1.0'); 
 
@@ -8,9 +10,8 @@ define ('SITETITLE', "OGMA CMS");
 
 define ('THEME', 'default');
 
-
 // set Site URL
-define ('SITEURL', "https://ogma-docs-n00dles.c9.io");
+define ('SITEURL', "http://ogma-docs");
 
 // set debug mode on or off
 define ('DEBUG', true);

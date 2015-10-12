@@ -1,7 +1,4 @@
-<?php 
-
-// Main engine defines    
-define('DS', DIRECTORY_SEPARATOR);
+<?php
 
 require_once( 'config.php');
 
@@ -22,7 +19,6 @@ $system = new Core();
 $nav = $system->nav;
 
 $uri = Core::getMyUrl();
-
 $pagedetails = $system->getPage($uri);
 
 $nav = $system->nav;
