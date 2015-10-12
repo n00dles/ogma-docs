@@ -56,8 +56,7 @@
 </div>
     <div class="contentbrand nav ">
     <div class="pull-right lang-bar">
-        <a href="#" class="btn btn-primary btn-xs">en</a>
-        <a href="#" class="btn btn-primary btn-xs">ru</a>
+        <?php $system->showLanguageBar(); ?>
     </div>
     <?php echo "Language: ".Core::$language; ?>
     </div>
@@ -70,7 +69,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <?php 
-                        //Core::debugArray($system->nav);
+                        Core::debugArray($system->languages);
                         echo $content; 
                         ?>
                     </div>
