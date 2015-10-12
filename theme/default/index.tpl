@@ -56,9 +56,8 @@
 </div>
     <div class="contentbrand nav ">
     <div class="pull-right lang-bar">
-        <?php $system->showLanguageBar(); ?>
+        <?php $system->showLanguageBar($pagedetails['file']); ?>
     </div>
-    <?php echo "Language: ".Core::$language; ?>
     </div>
     <div id="wrapper">
         <!-- /#sidebar-wrapper -->
@@ -69,7 +68,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <?php 
-                        Core::debugArray($system->languages);
+                        //Core::debugArray($pagedetails);
                         echo $content; 
                         ?>
                     </div>

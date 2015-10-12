@@ -20,6 +20,10 @@
 .lang-bar{
   padding-right:10px;
 }
+.lang-bar a{
+  margin-left:5px;
+  margin-right:5px;
+}
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;

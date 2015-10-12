@@ -353,12 +353,21 @@ class Core {
         return $result; 
     } 
        
-    public  function showLanguageBar(){
+    public  function showLanguageBar($pageurl){
         $output = '';
         $languages = $this->languages;
         foreach($languages as $language){
-            $output .= '<a href="#" class="btn btn-primary btn-xs">'.$language.'</a>';
+            if (Core::$language == $language) {
+                $current = "success";
+            } else {
+                $current = "primary";
+            }
+            $file = Core::getRootPath().'pages/'.$language.$pageurl;
+            if (file_exists($file)){
+                $output .= '<a href="/'.$language.$pageurl.'" class="btn btn-'.$current.' btn-xs">'.$language.'</a>';
+            }
         }
+        echo $output;
     }
     
 	public static function getRootPath() {
