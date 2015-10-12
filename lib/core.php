@@ -204,6 +204,9 @@ class Core {
         //set default language
         self::$language = LANGUAGE;
         
+        Core::autoloadClasses();
+        Core::autoloadShortcodes();
+        
         $this->pages = self::dirToArray(self::getRootPath().'pages'.DS.self::$language.DS);
         
         // get installed languages
@@ -215,6 +218,58 @@ class Core {
         
     }
     
+    	/**
+	 * Autoload Classes
+	 *
+	 * Automatically load all Classes in the folder /admin/system/helpers
+	 * 	
+	 * <code>
+	 * 		Core::autoloadClasses();
+	 * </code>
+	 *
+	 */
+	private static function autoloadClasses(){
+        if (!defined('ROOT')) define('ROOT',self::getRootPath());
+		$files = Core::getFiles(self::getRootPath().'/lib/helpers/','php');
+		foreach ($files as $file){
+			require_once('helpers/'.$file);
+		}
+		
+	}
+	
+	/**
+	 * Autoload Shortcodes
+	 *
+	 * Automatically load all Shortcodes in the folder /addins/shortcodes
+	 * 	
+	 * <code>
+	 * 		Core::autoloadClasses();
+	 * </code>
+	 *
+	 */
+	private static function autoloadShortcodes(){
+        if (!defined('ROOT')) define('ROOT',self::getRootPath());
+		$files = Core::getFiles(self::getRootPath().'/lib/shortcodes/','php');
+		foreach ($files as $file){
+			require_once('shortcodes/'.$file);
+		}
+		
+	}
+	
+    	public static function getFiles($path,$ext="") {
+		$handle = opendir($path) or die("Unable to open $path");
+		$file_arr = array();
+		while ($file = readdir($handle)) {
+			if ($file != '.' && $file != '..'){
+				if (pathinfo($file,PATHINFO_EXTENSION)==$ext) {
+					$file_arr[] =  $file;
+				}
+			}
+		}
+		closedir($handle);
+		return $file_arr;
+	}
+
     
     public function getInstalledLanguages(){
         $path = self::getRootPath().'pages';

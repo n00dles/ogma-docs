@@ -11,8 +11,7 @@ if (DEBUG===true){
 
 require_once( 'config.php');
 require_once( 'lib' . DS . 'core.php');
-require_once( 'lib' . DS . 'yaml.php');
-require_once( 'lib' . DS . 'parsedownextra.php');
+
 
 $system = new Core();
 
@@ -23,11 +22,16 @@ $pagedetails = $system->getPage($uri);
 
 $nav = $system->nav;
 
+
+Filters::addFilter('content','Shortcodes::doShortcode');
+
+
 //Core::debugArray($system->pages);
 $option = new FrontMatter(Core::getRootPath().DS.'pages'.DS.Core::$language.$pagedetails['file']);
 
 $markdownContent = new ParsedownExtra();
 $content = $markdownContent->text($option->fetch('content') );
+$content = Filters::execFilter('content',$content);
 $title = $option->fetch('title');
 $template = $option->fetch('template');
 $author = $option->fetch('author');
