@@ -36,5 +36,4 @@ $description = $option->fetch('description');
 $filepath = DS.'pages'.DS.Core::$language.$pagedetails['file'];
 $themeurl = '/theme/'.THEME;
 
-
 require_once('theme/'.THEME.'/'.$template);
