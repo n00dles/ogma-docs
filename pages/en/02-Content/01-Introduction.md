@@ -1,2 +1,3 @@
 # Introduction
 
+[qrcode url="" /]
