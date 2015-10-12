@@ -40,6 +40,6 @@ Copy the 'en' folder and rename for your new language.
 Prefix the language to the URL see that language version of the docs. 
 
 i.e 
-/en/Basics/introduction
-/ru/Basics/introduction
-/fr/Basics/introduction
+/en/Basics/introduction  
+/ru/Basics/introduction  
+/fr/Basics/introduction  
