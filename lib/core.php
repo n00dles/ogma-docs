@@ -368,7 +368,7 @@ class Core {
                     if ($page != "index.md"){
                         $parts = explode('-', $page);
                         $this->nav[$topmenu]['submenu'][$parts[0]] = array(
-                            'title'     => pathinfo($parts[1], PATHINFO_FILENAME),
+                            'title'     => str_replace("_"," ", pathinfo($parts[1], PATHINFO_FILENAME)),
                             'url'       => '/'.$topmenu.'/'.strtolower(pathinfo($parts[1], PATHINFO_FILENAME)),
                             'order'     => $parts[0],
                             'file'      => DS.$topmenu2.DS.$page,
