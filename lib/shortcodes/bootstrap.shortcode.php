@@ -193,7 +193,7 @@ class Bootstrapcore{
 	    "mode" => null
 	  ), $atts));
 	  $mode   = isset($mode) ? $mode : 'html'; 
-	  return '<pre data-language="'.$mode.'">'. htmlspecialchars($content) .'</pre>'; 
+	  return '<pre data-language="'.$mode.'"><code>'. htmlspecialchars($content) .'</code></pre>'; 
 	}
 
 }

@@ -30,8 +30,9 @@ Filters::addFilter('content','Shortcodes::doShortcode');
 $option = new FrontMatter(Core::getRootPath().DS.'pages'.DS.Core::$language.$pagedetails['file']);
 
 $markdownContent = new ParsedownExtra();
-$content = $markdownContent->text($option->fetch('content') );
+$content = $option->fetch('content');
 $content = Filters::execFilter('content',$content);
+$content = $markdownContent->text($content);
 $title = $option->fetch('title');
 $template = $option->fetch('template');
 $author = $option->fetch('author');
