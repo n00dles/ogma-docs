@@ -2,6 +2,7 @@
 title: OGMA CMS - The Basics
 author: Mike
 ---
-# Basics
-
-Discover what **OGMA** is all about and the core-concepts behind it.
+[jumbotron]
+#Welcome to OGMA-Docs
+[lead]A simple to install and use document management system[/lead]
+[/jumbotron]

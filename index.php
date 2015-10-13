@@ -31,8 +31,8 @@ $option = new FrontMatter(Core::getRootPath().DS.'pages'.DS.Core::$language.$pag
 
 $markdownContent = new ParsedownExtra();
 $content = $option->fetch('content');
-$content = Filters::execFilter('content',$content);
-$content = $markdownContent->text($content);
+$content2 = $markdownContent->text($content);
+$content = Filters::execFilter('content',$content2);
 $title = $option->fetch('title');
 $template = $option->fetch('template');
 $author = $option->fetch('author');

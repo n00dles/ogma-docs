@@ -322,14 +322,16 @@ class Core {
             }
             if ($match=='' && is_array($subpages)){
                 $i=0;
-                foreach($subpages['submenu'] as $key2=>$page){
-                    if ($newuri == $page['url']){
-                        $match = $page;
-                        $this->nav[$key]['submenu'][$key2]['active'] = true;
-                        $this->nav[$key]['active']= true;
-                        return $match;
+                if (array_key_exists('submenu', $subpages) && is_array($subpages['submenu'])){
+                    foreach($subpages['submenu'] as $key2=>$page){
+                        if ($newuri == $page['url']){
+                            $match = $page;
+                            $this->nav[$key]['submenu'][$key2]['active'] = true;
+                            $this->nav[$key]['active']= true;
+                            return $match;
+                        }
+                        $i++;
                     }
-                    $i++;
                 }
                 
             }
