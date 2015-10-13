@@ -26,6 +26,4 @@ function showFlickrGallery($atts){
 }
 
 Shortcodes::addShortcode( 'flickr', 'showFlickrGallery', '[flickr name="" ][/flickr]'  );
-Shortcodes::addShortcodeDesc('flickr','Flickr Album', '[flickr name="" ][/flickr]');
-
 ?>

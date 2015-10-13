@@ -18,7 +18,5 @@ function yoast_rss_shortcode( $atts ) {
 }
 
 Shortcodes::addShortcode( 'rss', 'yoast_rss_shortcode', '[rss feed="" num="5" excerpt="true" target="_self" ]'  );
-Shortcodes::addShortcodeDesc('rss','RSS Feed', '[rss feed="" num="5" excerpt="true" target="_self" ]');
-
 
 ?>

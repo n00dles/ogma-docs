@@ -13,6 +13,4 @@ function addSoundcloud($atts, $content = null) {
   }
 
 Shortcodes::addShortcode('soundcloud','addSoundcloud', '[soundcloud url="" width="" height="" /]');
-Shortcodes::addShortcodeDesc('soundcloud','Soundcloud Music', '[soundcloud url="" width="" height="" /]');
-
 ?>

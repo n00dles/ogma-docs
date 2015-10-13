@@ -196,56 +196,35 @@ class Bootstrapcore{
 	  return '<pre data-language="'.$mode.'">'. htmlspecialchars($content) .'</pre>'; 
 	}
 
-
-
-	
-	
-	
 }
 
 
 Shortcodes::addShortcode('icode','Bootstrapcore::addiCode', '[icode mode=""]content[/icode]');
-Shortcodes::addShortcodeDesc('icode','Inline Code', '[icode mode=""]content[/icode]');
 
 Shortcodes::addShortcode('code','Bootstrapcore::addCode', '[code mode=""]content[/code]');
-Shortcodes::addShortcodeDesc('code','Code Block', '[code mode=""]content[/code]');
-
 
 Shortcodes::addShortcode('jumbotron', 'Bootstrapcore::bootstrap_jumbotron');
-Shortcodes::addShortcodeDesc('jumbotron','Bootstrap Jumbotron', '[jumbotron]content[/jumbotron]');
 
 Shortcodes::addShortcode('label', 'Bootstrapcore::bootstrap_label');
-Shortcodes::addShortcodeDesc('label','Bootstrap Label', '[label]content[/label]');
 
 Shortcodes::addShortcode('badge', 'Bootstrapcore::bootstrap_badge');
-Shortcodes::addShortcodeDesc('badge','Bootstrap Badge', '[badge]content[/badge]');
 
 Shortcodes::addShortcode('lead', 'Bootstrapcore::bootstrap_lead');
-Shortcodes::addShortcodeDesc('lead','Bootstrap Lead', '[lead]content[/lead]');
 
 Shortcodes::addShortcode('panel', 'Bootstrapcore::bootstrap_panel');
-Shortcodes::addShortcodeDesc('panel','Bootstrap Panel', '[panel type="" title="" footer=""]content[/panel]');
 
 Shortcodes::addShortcode('tooltip', 'Bootstrapcore::bootstrap_tooltip');
-Shortcodes::addShortcodeDesc('tooltip','Bootstrap Tooltip', '[tooltip placement="" trigger="" href=""]content[/tooltip]');
 
 Shortcodes::addShortcode('icon', 'Bootstrapcore::bootstrap_icons');
-Shortcodes::addShortcodeDesc('icon','Bootstrap Icon', '[icon name=""]content[/icon]');
 
 Shortcodes::addShortcode('row', 'Bootstrapcore::bootstraps_row');
-Shortcodes::addShortcodeDesc('row','Bootstrap Row', '[rown]content[/row]');
 
 Shortcodes::addShortcode('col', 'Bootstrapcore::bootstrap_span');
-Shortcodes::addShortcodeDesc('col','Bootstrap Column', '[col class=""]content[/col]');
 
 Shortcodes::addShortcode('collapse', 'Bootstrapcore::bootstrap_collapse');
-Shortcodes::addShortcodeDesc('collapse','Bootstrap Collapseable', '[collapse id=""]content[/collapse]');
 
 Shortcodes::addShortcode('citem', 'Bootstrapcore::bootstrap_citem');
-Shortcodes::addShortcodeDesc('citem','Bootstrap Collapseable Item', '[citem id="" title="" parent=""]content[/citem]');
 
 Shortcodes::addShortcode('button', 'Bootstrapcore::bootstrap_buttons');
-Shortcodes::addShortcodeDesc('button','Bootstrap Button', '[button size="" type="" value="" href="" icon=""]content[/button]');
 
 Shortcodes::addShortcode('notification', 'Bootstrapcore::bootstrap_notice');
-Shortcodes::addShortcodeDesc('notification','Bootstrap Notification', '[notification type=""]content[/notification]');

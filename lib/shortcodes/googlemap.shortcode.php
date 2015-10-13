@@ -169,6 +169,4 @@ function mapme($attr) {
 	<?php
 }
 Shortcodes::addShortcode('googlemap', 'mapme', '[googlemap address="" z="" w="" h="" /]');
-Shortcodes::addShortcodeDesc('googlemap','Google Map', '[googlemap address="" z="" w="" h="" /]');
-
 ?>

@@ -14,6 +14,4 @@ function vimeo_shortcode($atts, $content=null) {
 	return "<iframe src='http://player.vimeo.com/video/$id?title=0&amp;byline=0&amp;portrait=0' width='$width' height='$height' frameborder='0'></iframe>";
 }
 Shortcodes::addShortcode('vimeo', 'vimeo_shortcode', '[vimeo id="" width="" height="" /]');
-Shortcodes::addShortcodeDesc('vimeo','Vimeo Video', '[vimeo id="" width="" height="" /]');
-
 ?>

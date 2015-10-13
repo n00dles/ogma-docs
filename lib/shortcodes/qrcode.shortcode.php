@@ -14,6 +14,4 @@ return '<img src="https://chart.googleapis.com/chart?chs='.$size.'x'.$size.'&cht
 
 }
 Shortcodes::addShortcode('qrcode','addQRCode', '[qrcode url="" size="150" eclevel="L" margin="0" /]');
-Shortcodes::addShortcodeDesc('qrcode','QR Code', '[qrcode url="" size="150" eclevel="L" margin="0" /]');
-
 ?>

@@ -44,7 +44,4 @@ function chart_shortcode( $atts ) {
 	return '<img title="'.$title.'" src="http://chart.apis.google.com/chart?cht='.$charttype.''.$string.$advanced.'" alt="'.$title.'" />';
 }
 Shortcodes::addShortcode('chart', 'chart_shortcode', '[chart data="" colors="" size="" bg="" title="" labels="" advanced="" type="" /]');
-Shortcodes::addShortcodeDesc('chart','Google Chart', '[chart data="" colors="" size="" bg="" title="" labels="" advanced="" type="" /]');
-
-
 ?>

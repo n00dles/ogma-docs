@@ -33,18 +33,6 @@ class Shortcodes {
         }
     }
     
-    /* 
-     * @uses $shortcode_tags,$shortcode_info
-     *
-     * @param string $tag Shortcode tag 
-     * @desc Description of the shortcode
-     */
-    public static function addShortcodeDesc($tag, $title = '', $func = '') {
-        Shortcodes::$shortcode_info[(string) $tag]['desc']  = $tag;
-        Shortcodes::$shortcode_info[(string) $tag]['title'] = $title;
-        Shortcodes::$shortcode_info[(string) $tag]['func']  = $func;
-    }
-    
     /**
      * Search content for shortcodes and filter shortcodes through their hooks.
      *
