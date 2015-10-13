@@ -1,3 +1,6 @@
 # Introduction
 
-[qrcode url="" /]
+    foreach($i as $r){	
+	echo ''; 
+    }
+
