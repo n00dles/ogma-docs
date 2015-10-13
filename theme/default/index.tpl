@@ -33,7 +33,7 @@
                 $i++;
                 ?>
                 <?php if (array_key_exists('submenu', $navItem) && is_array($navItem['submenu'])){  ?>
-                <li  data-toggle="collapse" data-target="#<?php echo 'menu'.$i; ?>" class="collapsed active">
+                <li  data-toggle="collapse" data-target="#<?php echo 'menu'.$i; ?>" class="collapsed ">
                   <a href="/<?php echo Core::$language.$navItem['url']; ?>"><i class="fa fa-circle-o fa-lg"></i> <?php echo $navItem['title']; ?> <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse <?php if ($navItem['active']) echo ' in'; ?> " id="<?php echo 'menu'.$i; ?>">
@@ -44,7 +44,7 @@
                 <?php } ?>
                 </ul>
                 <?php } else { ?>
-                <li><a href="/<?php echo Core::$language.$navItem['url']; ?>" ><i class="fa fa-dashboard fa-lg"></i> <?php echo $navItem['title']; ?></a>
+                <li><a href="/<?php echo Core::$language.$navItem['url']; ?>" ><i class="fa fa-circle-o fa-lg"></i> <?php echo $navItem['title']; ?></a>
                 <?php } ?>
                 
             
