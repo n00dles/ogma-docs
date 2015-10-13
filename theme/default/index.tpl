@@ -68,7 +68,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <?php 
-                        //Core::debugArray($pagedetails);
+                        //Core::debugArray($nav);
                         echo $content; 
                         ?>
                     </div>

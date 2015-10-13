@@ -167,7 +167,7 @@ class Bootstrapcore{
 		extract(Shortcodes::shortcodeAtts(array(
 	        'fullwidth' => 'true'
 	    ), $atts));
-	    $content = preg_replace('/<br class="nc".\/>/', '', $content);
+	    //$content = preg_replace('/<br class="nc".\/>/', '', $content);
 	    $result = '<div class="jumbotron">';
 	    if ($fullwidth=='true'){
 	    	$result .= '<div>';

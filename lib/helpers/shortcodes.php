@@ -28,8 +28,6 @@ class Shortcodes {
     public static function addShortcode($tag, $func, $desc = "Default Description") {
         if (is_callable($func)) {
             Shortcodes::$shortcode_tags[(string) $tag] = $func;
-            //self::addShortcodeDesc($tag, $tag, $desc);
-            //Shortcodes::$shortcode_info[(string)$tag] = $desc;
         }
     }
     
