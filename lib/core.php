@@ -349,7 +349,7 @@ class Core {
         foreach($pages as $key=>$subpages){
             $parts = explode('-', $key);
             $this->nav[strtolower($parts[1])] = array(
-                'title'     => pathinfo($parts[1], PATHINFO_FILENAME),
+                'title'     => str_replace("_"," ", pathinfo($parts[1], PATHINFO_FILENAME)),
                 'url'       => '/'.strtolower($parts[1]),
                 'order'     => $parts[0],
                 'active'    => false
