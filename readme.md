@@ -2,6 +2,8 @@
 
 This is a work in progress auto generated documentation system for OGMA CMS. 
 
+**NOTE** you'll need to manually change config.php to install while I do an installer.
+
 ### Pages
 
 Pages are stored in /pages/en 
