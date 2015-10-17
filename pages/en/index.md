@@ -1,14 +1,12 @@
 ---
-title: OGMA CMS - The Basics
-author: Mike
+title: OGMA Docs - The Basics
+author: n00dles
 ---
 [jumbotron]
 #Welcome to OGMA-Docs
 [lead]A simple to install and use document management system[/lead]
 [/jumbotron]
 
-## Introduction in russian
+## Introduction
 
 OGMA-Docs is a free, open source documentation system. 
-
-[button value="Download me Now!!" type="warning" href="http://www.digimute.com" /]
