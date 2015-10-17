@@ -80,6 +80,15 @@
   text-align: center;
   font-size: 14px;
 }
+.nav-side-menu .brand a, .nav-side-menu .brand a:hover, .nav-side-menu .brand a:visited{
+  background-color: #23282e;
+  line-height: 50px;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color:#e1ffff;
+  text-decoration: none;
+}
 .nav-side-menu .toggle-btn {
   display: none;
 }

@@ -302,6 +302,16 @@ class Core {
         $match = '';
         $parts = explode("/",$uri);
         $pages = $this->nav;
+        if ($uri=='/' && file_exists(self::getRootPath().'pages'.DS.self::$language.DS.'index.md')){
+            $mainpage = array(
+                'title'=>'',
+                'url'=>"/",
+                'order'=>0,
+                'active'=>0,
+                'file'=>'\index.md'
+            );
+            return $mainpage;  
+        }
         $counter = 0;
         if (in_array($parts[1],$this->languages)){
             self::$language = $parts[1];
@@ -313,7 +323,6 @@ class Core {
             $newuri = $uri;
         }
 
-        
         foreach($pages as $key=>$subpages ){
             if ($newuri == $pages[$key]['url']){
                 $match = $pages[$key];
@@ -336,11 +345,21 @@ class Core {
                 
             }
         } 
-        
-        reset($pages);
-        $first_key = key($pages);
-        $match = $pages[$first_key];
-        return $match;
+        if (file_exists(self::getRootPath().'pages'.DS.self::$language.DS.'index.md')){
+            $notfound = array(
+                'title'=>'',
+                'url'=>"/404",
+                'order'=>0,
+                'active'=>0,
+                'file'=>'\404.md'
+            );
+            return $notfound;
+        } else {
+            reset($pages);
+            $first_key = key($pages);
+            $match = $pages[$first_key];
+            return $match;
+        }
         
     }
     
@@ -385,18 +404,13 @@ class Core {
     public static function dirToArray($dir) { 
         $result = array(); 
         $cdir = scandir($dir); 
-        foreach ($cdir as $key => $value) 
-        { 
-            if (!in_array($value,array(".","..",'index.md','404.md'))) 
-            { 
-                if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) 
-                { 
+        foreach ($cdir as $key => $value){ 
+            if (!in_array($value,array(".","..",'404.md'))){ 
+                if (is_dir($dir . DIRECTORY_SEPARATOR . $value)){ 
                     if (preg_match('/(\d{2,})(-)(\w+)/',$value, $matches)){
                         $result[$value] = self::dirToArray($dir . DIRECTORY_SEPARATOR . $value);
                     } 
-                } 
-                    else 
-                { 
+                } else { 
                     if (pathinfo($value, PATHINFO_EXTENSION) == 'md' ){
                         // only add files in the format 
                         // xx-alpha.md to the pages array to build the menu
