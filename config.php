@@ -11,7 +11,7 @@ define ('SITETITLE', "OGMA CMS");
 define ('THEME', 'default');
 
 // set Site URL
-define ('SITEURL', "http://ogma-docs");
+define ('SITEURL', "https://ogma-docs-n00dles.c9.io");
 
 // set debug mode on or off
 define ('DEBUG', true);

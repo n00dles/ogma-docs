@@ -302,16 +302,7 @@ class Core {
         $match = '';
         $parts = explode("/",$uri);
         $pages = $this->nav;
-        if ($uri=='/' && file_exists(self::getRootPath().'pages'.DS.self::$language.DS.'index.md')){
-            $mainpage = array(
-                'title'=>'',
-                'url'=>"/",
-                'order'=>0,
-                'active'=>0,
-                'file'=>'\index.md'
-            );
-            return $mainpage;  
-        }
+
         $counter = 0;
         if (in_array($parts[1],$this->languages)){
             self::$language = $parts[1];
@@ -322,7 +313,16 @@ class Core {
             self::$language = 'en';
             $newuri = $uri;
         }
-
+        if ($uri=='/' && file_exists(self::getRootPath().'pages'.DS.self::$language.DS.'index.md')){
+            $mainpage = array(
+                'title'=>'',
+                'url'=>"/",
+                'order'=>0,
+                'active'=>0,
+                'file'=>DS.'index.md'
+            );
+            return $mainpage;  
+        }
         foreach($pages as $key=>$subpages ){
             if ($newuri == $pages[$key]['url']){
                 $match = $pages[$key];
@@ -351,7 +351,7 @@ class Core {
                 'url'=>"/404",
                 'order'=>0,
                 'active'=>0,
-                'file'=>'\404.md'
+                'file'=>'/404.md'
             );
             return $notfound;
         } else {

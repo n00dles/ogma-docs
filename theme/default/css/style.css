@@ -84,10 +84,11 @@
   background-color: #23282e;
   line-height: 50px;
   display: block;
-  text-align: center;
+  text-align: left;
   font-size: 14px;
   color:#e1ffff;
   text-decoration: none;
+  padding-left:12px;
 }
 .nav-side-menu .toggle-btn {
   display: none;

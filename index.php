@@ -33,7 +33,7 @@ $markdownContent = new ParsedownExtra();
 $content = $option->fetch('content');
 $content2 = $markdownContent->text($content);
 $content = Filters::execFilter('content',$content2);
-$title = $option->fetch('title');
+$title = ($option->fetch('title')!='') ? $option->fetch('title') : SITETITLE;
 $template = $option->fetch('template');
 $author = $option->fetch('author');
 $keywords = $option->fetch('keywords');

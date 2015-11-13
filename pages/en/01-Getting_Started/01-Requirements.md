@@ -1,4 +1,8 @@
-## Requirements
+---
+title: OGMA CMS - Requirements
+author: n00dles
+---
+#Requirements
 
 Apache with Mod Rewrite  
 PHP 5.2.3 or higher 
