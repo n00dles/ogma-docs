@@ -245,3 +245,27 @@ body {
         margin-right: 0;
     }
 }
+
+.content {
+  -webkit-transform: translateZ(0);
+  position: relative;
+  z-index: 30;
+}
+.page-wrapper .dark-box {
+  width: 50%;
+  background-color: #2E3336;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+content pre, .content blockquote {
+  background-color: #1E2224;
+  color: #fff;
+  margin: 0;
+  width: 50%;
+  float: right;
+  clear: right;
+  box-sizing: border-box;
+}

@@ -1,17 +1,12 @@
 <?php
-// System Defines 
-
-define('DS', DIRECTORY_SEPARATOR);
-
-// set version
-define('VERSION','1.0'); 
+// User editiable options 
 
 define ('SITETITLE', "OGMA CMS");
 
 define ('THEME', 'default');
 
 // set Site URL
-define ('SITEURL', "https://ogma-docs-n00dles.c9.io");
+define ('SITEURL', "http://ogma-docs");
 
 // set debug mode on or off
 define ('DEBUG', true);
@@ -20,6 +15,17 @@ define ('DEBUG', true);
 define ('LANGUAGE', 'en');
 
 // enable gihub linking
-define ('GHURL', 'https://github.com/n00dles/ogma-docs/blob/master/')
+define ('GHURL', 'https://github.com/n00dles/ogma-docs/blob/master/');
+
+/*
+************************************
+DO NOT CHANGE THE OPTIONS BELOW
+************************************
+*/
+define('DS', DIRECTORY_SEPARATOR);
+
+// set version
+define('VERSION','1.0'); 
+
 
 ?>

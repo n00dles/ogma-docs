@@ -12,6 +12,7 @@
     <link href="<?php echo $themeurl; ?>/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?php echo $themeurl; ?>/css/style.css" rel="stylesheet">
+    <link href="<?php echo $themeurl; ?>/css/prism.css" rel="stylesheet" />
     <link href="<?php echo $themeurl; ?>/css/bootstrap_Spacelab.min.css" rel="stylesheet" class="SelectedTheme">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,7 +45,11 @@
                 <?php } ?>
                 </ul>
                 <?php } else { ?>
-                <li><a href="/<?php echo Core::$language.$navItem['url']; ?>" ><i class="fa fa-circle-o fa-lg"></i> <?php echo $navItem['title']; ?></a>
+                <li>
+                <a href="/<?php echo Core::$language.$navItem['url']; ?>" >
+                    <i class="fa fa-circle-o fa-lg"></i> 
+                        <?php echo $navItem['title']; ?>
+                </a></li>
                 <?php } ?>
                 
             
@@ -58,6 +63,7 @@
     <div class="pull-right lang-bar">
         <?php $system->showLanguageBar($pagedetails['file'], $pagedetails['url']); ?>
     </div>
+        
     </div>
     <div id="wrapper">
         <!-- /#sidebar-wrapper -->
@@ -65,7 +71,8 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row content">
+                    <div class="dark-box"></div>
                     <div class="col-lg-12">
                         <?php 
                         //Core::debugArray($option->data);
@@ -88,6 +95,9 @@
     
     <!-- App JavaScript -->
     <script src="<?php echo $themeurl; ?>/js/script.js"></script>
+
+     <!-- App JavaScript -->
+    <script src="<?php echo $themeurl; ?>/js/prism.js"></script>
     
     <!-- Menu Toggle Script -->
     <script>
