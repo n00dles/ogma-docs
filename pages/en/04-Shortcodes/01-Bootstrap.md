@@ -3,7 +3,7 @@ title: OGMA Docs - The Basics
 author: n00dles
 ---
 [jumbotron]
-#Shortcode - boostrap
+#Shortcode - bootstrap
 [/jumbotron]
 
 Boostrap shortcodes include the following:  
