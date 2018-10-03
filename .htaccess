@@ -3,9 +3,6 @@ Options +FollowSymLinks
 
 Options -Indexes
 
-
-
-
 <ifModule mod_gzip.c>
 mod_gzip_on Yes
 mod_gzip_dechunk Yes
