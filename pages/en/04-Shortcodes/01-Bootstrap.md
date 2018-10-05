@@ -16,7 +16,16 @@ Boostrap shortcodes include the following:
 None  
 #### Description 
 Displays a jumbotron as seen on the top of each of these pages. Use in conjunction with *lead*  
+#### Example 
+[code]
+[jumbotron]
+#Jumbotron Example
+[/jumbotron]
+[/code]
 
+[jumbotron]
+#Jumbotron Example
+[/jumbotron]
 
 # lead 
 [code] [ lead ]content[ /lead ] [/code]
@@ -24,6 +33,20 @@ Displays a jumbotron as seen on the top of each of these pages. Use in conjuncti
 None  
 #### Description 
 Displays a subheading, usually within a *jumbotron*
+#### Example 
+[code]
+[jumbotron]
+#Jumbotron Example
+[lead]With a lead subtitle[/lead]
+[/jumbotron]
+[/code]
+
+[jumbotron]
+#Jumbotron Example
+[lead]With a lead subtitle[/lead]
+[/jumbotron]
+
+
 
 # button 
 #### Description 
