@@ -22,4 +22,7 @@ The following shortcodes are provided by default:
 - **soundcloud**, embed a soundcloud clip
 - **vimeo**, embed a Vimeo video
 - **youtube**, embed a YouTube Video 
+- **osm** , embed an inteactive OSM map
+- **osmpic**, embed a static OSM map
 
+[osm lon="-6.266155" lat="53.350140" z="3" w="400" h="300" ]
